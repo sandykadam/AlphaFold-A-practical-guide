@@ -48,7 +48,7 @@ function getPages(dir, parentUrl = "") {
 
     for (const entry of entries) {
       if (!entry.isDirectory()) continue;
-      if (["_site", "_layouts", "_data", "scripts", ".git"].includes(entry.name)) continue;
+      if (["_site", "_layouts", "_data", "scripts", ".git", "src"].includes(entry.name)) continue;
 
       navigation[entry.name] = getPages(
         path.join(dir, entry.name),
@@ -68,7 +68,7 @@ function getPages(dir, parentUrl = "") {
     // FOLDER
     // ----------------------------
     if (entry.isDirectory()) {
-      if (["_site", "_layouts", "_data", "scripts", ".git"].includes(entry.name)) continue;
+      if (["_site", "_layouts", "_data", "scripts", ".git", "src"].includes(entry.name)) continue;
 
       const rawName = entry.name;
       const cleanName = stripNumber(rawName);
