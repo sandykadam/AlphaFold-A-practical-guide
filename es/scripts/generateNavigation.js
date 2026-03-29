@@ -73,7 +73,8 @@ function getPages(dir, parentUrl = "") {
       const rawName = entry.name;
       const cleanName = stripNumber(rawName);
 
-      const folderUrl = `${parentUrl}/${cleanName}`;
+      const folderUrlRaw = toTitle(`${parentUrl}/${cleanName}`);
+      const folderUrl = folderUrlRaw.replace(/\s/g, "-").toLowerCase();
       const indexPath = path.join(entryPath, "index.md");
 
       if (fs.existsSync(indexPath)) {
