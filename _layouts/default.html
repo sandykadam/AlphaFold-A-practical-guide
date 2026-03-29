@@ -5,7 +5,10 @@
 
   {% assign lang = page.path | split: '/' | first %}
   {% assign t = site.data[lang] | default: site.data['en'] %}
-  {% assign course_slug = t.course.slug %}
+  {% assign course_slug = t.course.title 
+                          | replace: ':', '' 
+                          | replace: ' ', '-' 
+                      %}
   <title>{{ t.course.title }} | EMBL-EBI Training</title>
 	<link rel="stylesheet" href="https://assets.emblstatic.net/vf/v2.5.26/css/styles.css" type="text/css">
 
