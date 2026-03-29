@@ -100,8 +100,8 @@ function getPages(dir, parentUrl = "") {
       const rawName = entry.name.replace(".md", "");
       const cleanName = stripNumber(rawName);
 
-      const fileUrl = `${parentUrl}/${cleanName}/`;
-
+      const fileUrlRaw = toTitle(`${parentUrl}/${cleanName}`);
+      const fileUrl = fileUrlRaw.replace(/\s/g, "-").toLowerCase();
       // ✅ inject permalink into file
       addPermalink(entryPath, fileUrl);
 
